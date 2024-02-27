@@ -1,0 +1,16 @@
+#screen{
+    position: relative;
+
+}
+.image {
+    background-image: url("super-bowl-lviii.png");
+    width:1200px;
+    height: 800px;
+    position: absolute;
+}
+.score {
+    background-image: url("Score.png");
+}
+.title {
+    background-image: url("Super_Bowl_LVIII_logo.svg.png");
+}
