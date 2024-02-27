@@ -1,9 +1,9 @@
-@media (width <= 600px){
+@media (max-width: 600px){
     #narrowScreen{
         background-color: purple;
     }
 }
-@media (width <= 800px){
+@media (max-width: 800px){
     #wideScreen{
         background-color: lightblue;
     }
