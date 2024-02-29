@@ -21,18 +21,17 @@ body {
   .grid {
     display: flex;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 20px;
     max-width: 980px;
   }
   .article {
     flex: left;
+    max-width: 66.67%;
   }
   .aside{
-    flex:right;
+    flex: left;
   }
   nav {
-    display: flex;
-    justify-content: space-evenly;
     position: sticky;
     top:-1px;
     background-color: #000;
@@ -40,6 +39,9 @@ body {
   }
   
   nav ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
     margin: 0;
     padding: 0;
     list-style: none;
@@ -55,11 +57,26 @@ body {
     display:grid;
     grid-template-columns: 1fr 1fr;
     list-style: none;
-    margin: 1px;
+  }
+
+  .photos li {
     padding: 1px;
   }
 
   .feature {
       width: 200px;
-      position: absolute;
+      padding-right: 5px;
+  }
+
+  @media screen and (max-width: 500px) {
+    nav ul{
+      flex-direction: column;
+    }
+
+    .grid {
+      flex-direction: column;
+    }
+    .photos {
+      display: block;
+    }
   }
