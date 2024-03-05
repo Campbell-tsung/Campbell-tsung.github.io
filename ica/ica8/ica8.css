@@ -1,0 +1,77 @@
+body{
+    background-color: khaki;
+}
+#box1{
+    width: 25vw;
+    height: 20vh;
+    background-color: indianred;
+    transition: margin 2s, background-color 1s, padding 1s, margin 1s;
+}
+
+/*
+#box1:hover {
+    background-color: purple;
+}
+is the most basic way to do it
+*/
+
+#box1:hover {
+    background-color: purple;
+    margin-left: 100%;
+    padding: 200px;
+    margin: 300px;
+}
+
+#newbox{
+    border: 1px solid;
+    width: 150px;
+    height: 150px;
+    background-color: #0000ff;
+    transition: width 2s, height 2s, rotate 2s, background-color 2s;
+}
+/* transistion will stay active as long as user is interacting, will also add smoothness to a cut and dry movement*/
+
+#newbox:hover {
+    background-color: #ffcccc;
+    width: 250px;
+    height: 250px;
+    rotate: 180deg;
+}
+
+#box2{
+    width: 25vw;
+    height:20vh;
+    position: relative;
+    background-color: orangered;
+    animation-name: box2move;
+    animation-duration: 6s;
+    animation-iteration-count:infinite;
+}
+
+@keyframes box2move{
+    from{
+        margin: 0;
+        margin-top: 0;
+    }
+
+    25%{
+        margin-left:75%;
+        margin-top: 0;
+    }
+
+    50% {
+        margin-left:75%;
+        margin-top: 25%;
+    }
+
+    75%{
+        margin-left:0;
+        margin-top: 25%;
+
+    }
+
+    to {
+        margin: 0;
+    }
+
+}
