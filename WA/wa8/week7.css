@@ -1,0 +1,79 @@
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: powderblue;
+}
+nav{
+    height: 50vh;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height:20px;
+    background-color: green;
+}
+
+nav a:hover {
+    background-color: hotpink;
+}
+
+nav a{
+    width:10vw;
+    text-align: center;
+    text-decoration: none;
+    color:black;
+}
+body h1{
+    width: 290px;
+    height: 50px;
+    transition: width 2s, height 2s, rotate 2s, background-color 2s;
+}
+
+body h1:hover {
+    background-color: hotpink;
+    rotate: 360deg;
+}
+img{
+    width:500px;
+    height: 500px;
+}
+
+#red-ball{
+    background-color: hotpink;
+    width: 20px;
+    height:20px;
+    border-radius: 50%;
+    position: absolute;
+    left:5vw;
+    top:0;
+    animation-name: red-ball-move;
+    animation-duration: 8s;
+    animation-iteration-count:infinite;
+}
+
+@keyframes red-ball-move{
+    from{
+        margin: 0;
+        margin-top: 0;
+    }
+
+    25%{
+        margin-left:80%;
+        margin-top: 0;
+    }
+
+    50% {
+        margin-left:80%;
+        margin-top: 45%;
+    }
+
+    75%{
+        margin-left:0;
+        margin-top: 45%;
+    }
+
+    to {
+        margin: 0;
+    }
+
+}
