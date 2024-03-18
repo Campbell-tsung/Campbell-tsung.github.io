@@ -47,6 +47,8 @@ header{
 }
   
 .featured {
+    display: flex;
+    flex-direction: column;
     width: 400px;  
     height: 250px;
     margin: auto;
@@ -75,10 +77,28 @@ p{
 }
 
 @media screen and (max-width: 500px) {
+    header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        padding: 30px 100px 1000px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        z-index: 100;
+    }
+    .navigation a{
+        padding: 6px 15px;
+        border-radius: 20px;
+        margin: 0 30px;
+    }
     .program {
       flex-direction: column;
     }
     .feature{ 
-        height: 200px;
+        display: flex;
+        flex-direction: column;
+        height: 300px;
     }
 }
