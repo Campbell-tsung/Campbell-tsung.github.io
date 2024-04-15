@@ -1,39 +1,31 @@
-const btn = document.querySelector("#js-new-quote");
-btn.addEventListener('click',getQuote);
+const btn = document.querySelector("#js-new-pun");
+btn.addEventListener('click', getPun);
 
-const answerBtn = document.querySelector("#js-tweet");
-answerBtn.addEventListener('click',getAnswer);
+const endpoint = 'https://punapi.rest/api/pun';
 
-const answerText = document.querySelector("#js-answer-text");
+async function getPun() {
 
-const endpoint = 'https://cat-fact.herokuapp.com';
-
-let answer ='';
-
-async function getQuote() {
-
-    try{
-        const response = await fetch(endpoint);
-        if (!response.ok){
-            throw Error(response.statusText)
+    try {
+        const response = await fetch(endpoint, {
+            redirect: 'follow'
+        });
+        if (!response.ok) {
+            throw Error(response.statusText);
         }
 
         const json = await response.json();
-        console.log(json['facts']);
-        displayQuote(json['facts']);
-        answerText.textContent = '';
-    } catch (err){
+        console.log(json['pun']);
+        displayPun(json['pun']);
+    } catch (err) {
         console.log(err);
-        alert('Failed to fetch new quote');
+        alert('Failed to fetch new pun');
     }
 }
 
-function displayQuote(quote) {
-    const quoteText = document.querySelector("#js-quote-text");
-    quoteText.textContent = quote;
+function displayPun(pun) {
+    const punText = document.querySelector("#js-pun-text");
+    punText.textContent = pun;
 }
 
-function getAnswer(){
-    answerText.textContent = answer;
-}
-getQuote();
+getPun();
+
