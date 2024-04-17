@@ -31,6 +31,8 @@ function loop () {
     requestAnimationFrame(loop);
 }
 
+
+
 class Ball {
     constructor(x,y, velX, velY, color, size) {
         this.x = x;
@@ -69,6 +71,19 @@ class Ball {
         this.y += this.velY;
     }
 
+    //collisonDetect() {
+    //    for (const ball of balls) {
+    //        if (this !==ball){
+    //            const dx = this.x-ball.x;
+    //            const dy = this.y-ball.y;
+    //            const distance = Math.sqrt(dx*dx + dy*dy);
+    //            
+    //            if (distance < this.size + ball.size) {
+    //                ball.color = this.color = randomRGB();
+    //            }
+    //        }
+    //    }
+    //}
     collisonDetect() {
         for (const ball of balls) {
             if (this !==ball){
@@ -77,7 +92,7 @@ class Ball {
                 const distance = Math.sqrt(dx*dx + dy*dy);
                 
                 if (distance < this.size + ball.size) {
-                    ball.color = this.color = randomRGB();
+                    ball.velX= this.velX = -(this.velX);
                 }
             }
         }
@@ -86,7 +101,7 @@ class Ball {
 
 const balls = [];
 
-while (balls.length < 10){
+while (balls.length < 50){
     const size = random (1,20);
     const ball = new Ball(
         random(0 + size, width-size), 
