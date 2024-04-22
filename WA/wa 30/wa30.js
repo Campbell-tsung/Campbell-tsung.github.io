@@ -1,3 +1,4 @@
+//Q1
 const employees = [
     {
         firstName: "Sam",
@@ -22,14 +23,14 @@ const employees = [
     }
 ];
 
-// JSON for company
+//Q2
 const company = {
     companyName: "Tech Stars",
     website: "www.techstars.site",
     employees: employees
 };
 
-// Adding new employee Anna
+//Q3
 const anna = {
     firstName: "Anna",
     department: "Tech",
@@ -41,31 +42,29 @@ const anna = {
 employees.push(anna);
 company.employees = employees;
 
-// Calculate total salary
+//Q4
 let totalSalary = 0;
 employees.forEach(employee => {
     totalSalary += employee.salary;
 });
 console.log("Total salary for all employees:", totalSalary);
 
-// Function to give raise
+//Q5
 function giveRaise(employee) {
     if (employee.raiseEligible) {
-        employee.salary *= 1.10; // Increase salary by 10%
-        employee.raiseEligible = false; // Set raise eligibility to false
+        employee.salary *= 1.10;
+        employee.raiseEligible = false;
     }
 }
 
-// Give raise to eligible employees
 employees.forEach(employee => {
     giveRaise(employee);
 });
 console.log("Employees after raise:", employees);
 
-// Array of employees working from home
+//Q6
 const workingFromHome = ['Anna', 'Sam'];
 
-// Update wfh property for each employee
 employees.forEach(employee => {
     if (workingFromHome.includes(employee.firstName)) {
         employee.wfh = true;
@@ -73,4 +72,5 @@ employees.forEach(employee => {
         employee.wfh = false;
     }
 });
+
 console.log("Employees after updating wfh status:", employees);
