@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terrible Volume Control</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: red;
+        text-align: center;
+    }
+    .volume-control {
+        width: 300px;
+        margin: 100px auto;
+        background-color: darkred;
+        border: 2px solid #ccc;
+        padding: 20px;
+    }
+    .volume-slider {
+        width: 80%;
+        margin: 20px auto;
+        height: 20px;
+        background-color: black;
+        position: relative;
+    }
+    .volume-knob {
+        width: 20px;
+        height: 20px;
+        background-color: darkred;
+        border-radius: 50%;
+        cursor: pointer;
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .volume-display {
+        margin-top: 20px;
+        font-size: 24px;
+    }
+</style>
+</head>
+<body>
+
+<div class="volume-control">
+    <div class="volume-slider">
+        <div class="volume-knob"></div>
+    </div>
+    <p>Drag the knob to adjust volume</p>
+    <div class="volume-display" id="volume-display">Volume: <span id="volume-value">50</span></div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const knob = document.querySelector('.volume-knob');
+        const slider = document.querySelector('.volume-slider');
+        const volumeDisplay = document.getElementById('volume-value');
+
+        let isDragging = false;
+
+        knob.addEventListener('mousedown', function(event) {
+            isDragging = true;
+        });
+
+        document.addEventListener('mousemove', function(event) {
+            if (isDragging) {
+                const sliderRect = slider.getBoundingClientRect();
+                let x = event.clientX - sliderRect.left;
+                if (x < 0) x = 0;
+                if (x > sliderRect.width) x = sliderRect.width;
+                knob.style.left = x + 'px';
+
+                // Update volume display with random number
+                volumeDisplay.textContent = Math.floor(Math.random() * 101);
+            }
+        });
+
+        document.addEventListener('mouseup', function(event) {
+            isDragging = false;
+        });
+    });
+</script>
+
+</body>
+</html>
