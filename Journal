@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freshman Year: A Reflection</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;600&display=swap');
+
+        :root {
+            --bg-color: #f4f7f9;
+            --card-bg: #ffffff;
+            --text-color: #333;
+            --heading-color: #2c3e50;
+            --accent-color: #3498db;
+            --win-bg: #e8f6fe;
+            --win-border: #aedffc;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 2rem;
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            color: var(--heading-color);
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+
+        .journal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .journal-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            padding: 1.5rem 2rem;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        
+        .journal-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--shadow-color);
+        }
+
+        .journal-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--heading-color);
+            margin: 0 0 1rem 0;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.75rem;
+        }
+
+        .journal-card p {
+            flex-grow: 1;
+            margin: 0 0 1.5rem 0;
+        }
+
+        .win-button {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            align-self: flex-start;
+        }
+
+        .win-button:hover {
+            background-color: #2980b9;
+        }
+        
+        .win-button:disabled {
+            background-color: #bdc3c7;
+            cursor: not-allowed;
+        }
+
+        .win-container {
+            background-color: var(--win-bg);
+            border: 1px solid var(--win-border);
+            border-left: 5px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            color: #2a5a75;
+            display: none; /* Hidden by default */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Freshman Year: A Reflection</h1>
+            <p>A look back at the moments of challenge, growth, and victory. Click the button on each entry to highlight the small win from that day.</p>
+        </header>
+
+        <main id="journal-container" class="journal-grid">
+            </main>
+    </div>
+
+    <script>
+        const journalEntries = [
+            {
+                date: 'September 5th',
+                entry: "I'm officially here! My dorm room is… cozy. My roommate, Chloe, seems nice, though we haven't talked much beyond \"Hi, I'm…\" and \"Wow, this is smaller than I thought.\" Mom cried when she left, and honestly, I felt a little lump in my throat too. The campus is huge and overwhelming. I saw so many people walking around with confident smiles, and I just felt like a deer in headlights. Tried to unpack and make my side of the room look less like a disaster zone. Dinner in the dining hall was… an experience. So many options, so many people, so much noise. I ended up with a plate of lukewarm pasta and sat by myself, scrolling through my phone pretending to be busy. It feels weird to be completely on my own. I miss my dog already. Tomorrow's orientation. Wish me luck.",
+                win: "Taking the first step to make your new space your own by unpacking."
+            },
+            {
+                date: 'September 12th',
+                entry: "Classes have officially started, and my brain feels like mush. Psych 101 is actually pretty interesting, but Bio is already making me feel like I'm drowning. So much reading! And calculus… don't even get me started. I swear the professor speaks in a different language. I joined a study group for Bio, which was a little awkward at first but hopefully will help. Chloe and I are starting to find a rhythm in the room; we mostly just exist together, but it's not bad. Everyone seems to be making friends so fast, and I'm still feeling like an outsider looking in. I went to a club fair and signed up for about ten different things, mostly out of panic. Maybe I'll actually go to one of them. Just feeling a bit… invisible right now.",
+                win: "Proactively joining a study group to tackle a challenging class."
+            },
+            {
+                date: 'September 28th',
+                entry: "Okay, so something actually happened tonight! My hall's RA organized a \"get to know your floor\" game night, and it wasn't nearly as lame as I thought it would be. I actually talked to some people! There's a girl named Maya down the hall who's super funny, and a guy named Ben from my psych class who remembered my name. We ended up playing Cards Against Humanity (don't tell my mom), and I actually laughed until my stomach hurt. It felt good to not be studying or worrying about something. Maybe this \"making friends\" thing isn't as impossible as I thought. Still don't feel like I'm part of a \"group\" yet, but tonight was a step in the right direction.",
+                win: "Laughing until your stomach hurt and connecting with new people at game night."
+            },
+            {
+                date: 'October 15th',
+                entry: "Midterms are officially the devil. I pulled an all-nighter for my Bio exam, fueled by bad coffee and sheer panic. I think I bombed it. I just feel so exhausted and overwhelmed. Everything feels like it's piling up – assignments, readings, trying to keep up with friends, and just generally functioning. I called my mom tonight and actually cried a little. I miss home so much. I miss my own bed, my dad's terrible jokes, and just the comfort of familiarity. It feels like everyone else has it all together, and I'm just barely keeping my head above water. Is it supposed to be this hard? I hope I get through this.",
+                win: "Reaching out for support by calling your mom when you felt overwhelmed."
+            },
+            {
+                date: 'November 1st',
+                entry: "I actually feel… okay. The midterm grades came back, and I didn't bomb Bio as badly as I thought (still not great, but passing!). I've started going to the gym regularly, which actually helps clear my head. My study group for Bio is actually really solid now, and we help each other out a lot. I've been hanging out with Maya and a few other girls from my floor more often – we grabbed pizza last night and just talked for hours. It's nice to have people to just chill with. I still have moments of feeling overwhelmed, but I feel like I'm finally finding a bit of a routine. It's not perfect, but it's my routine, and that feels good.",
+                win: "Finding a personal routine with the gym and study groups that feels good."
+            },
+            {
+                date: 'November 20th',
+                entry: "Guess what?! I actually got an email back about volunteering at the local animal shelter! I applied on a whim weeks ago and totally forgot about it. My first shift is next Saturday. I'm so excited and a little nervous. It'll be nice to do something completely different from school, and honestly, getting to hang out with puppies and kittens sounds like a dream. Also, the guy from my psych class, Ben, asked if I wanted to grab coffee next week. Just as friends, I think, but still! It's nice to feel like people are seeing me and wanting to connect. Maybe freshman year isn't just about surviving after all.",
+                win: "Getting an exciting opportunity to volunteer at the animal shelter."
+            },
+            {
+                date: 'December 8th',
+                entry: "Finals are looming, and the library is already a war zone. But honestly, I feel more prepared than I did for midterms. I've learned how to study better, how to prioritize, and when to ask for help. This semester has been a whirlwind. I've made some genuine friends, I've learned so much (even if I'm still confused by calculus), and I've definitely grown as a person. I'm not the same timid girl who showed up here in September. I'm a little more confident, a little more independent, and a lot less afraid to ask for directions (literally and figuratively). I'm looking forward to going home for winter break, but I'm also already thinking about what next semester will bring. Freshman year, you've been a wild ride. But I think I'm starting to get the hang of it.",
+                win: "Feeling more prepared for finals because you learned how to study better and ask for help."
+            },
+            {
+                date: 'January 18th',
+                entry: "I'm back! And it feels... weirdly familiar. After a month of home-cooked meals and sleeping in my own bed, adjusting to dorm life again is a bit of a shock. Chloe and I hugged when we saw each other, which was nice. My classes this semester seem even tougher than last: Organic Chem, Microeconomics, some history elective, and a mandatory writing seminar. O-Chem already looks like a foreign language. I feel a bit more confident this time around, though. I know where things are, I have friends, and I know the dining hall best practices (always check the stir-fry line!). My main goal for this semester is to actually understand O-Chem and maybe join one more club. Let's do this, Semester Two.",
+                win: "Starting the new semester feeling more confident and knowledgeable."
+            },
+            {
+                date: 'February 10th',
+                entry: "It feels like February is just one long, grey blur. The excitement of being back has definitely worn off. O-Chem is as brutal as expected, and Microeconomics is surprisingly dull. I'm spending most of my time in the library, powered by way too much coffee. It's getting harder to motivate myself to go to the gym, and honestly, I just want to curl up with a good book and ignore my responsibilities. Valentine's Day is next week, and the campus is covered in red and pink decorations. It's cute, but also a little \"ugh\" when you're single and just trying to survive the semester. Maya and I are planning a \"Galentine's\" pizza night, which should be fun. Just trying to keep my head down and push through.",
+                win: "Planning a fun 'Galentine's' night with a friend to look forward to."
+            },
+            {
+                date: 'March 5th',
+                entry: "Spring Break is just around the corner, and I'm practically counting down the minutes! Most of my friends are going home, which I'm doing too. Part of me wished I was going somewhere exciting with a big group, but honestly, a week of uninterrupted sleep and home cooking sounds like heaven right now. The academic pressure has ramped up significantly. We had a huge O-Chem midterm last week that I actually feel decent about, which is a miracle. But now I have a massive microeconomics paper due, and a group project for history that's been a nightmare. I just want to make it to break without completely losing my mind. This semester feels like a marathon.",
+                win: "Feeling decent about a huge O-Chem midterm, which is a major victory!"
+            },
+            {
+                date: 'April 1st',
+                entry: "Spring Break was exactly what I needed! I slept, I ate, I saw my family and dog, and I barely thought about school. Coming back feels less jarring this time; it's almost like a fresh start for the last stretch. The weather is finally getting warmer here, and campus looks so much more alive. Everyone's studying outside, playing frisbee on the quad, and it almost makes me forget about the mountain of work still ahead. Finals schedules just came out, and it's looking pretty brutal. I'm trying to be strategic this year, planning out my study blocks and making sure I don't pull too many all-nighters. I can see the finish line now. Just a few more weeks!",
+                win: "Returning from break with the feeling of a fresh start for the final push."
+            },
+            {
+                date: 'April 25th',
+                entry: "It's officially finals season! My dorm room is a disaster zone of textbooks, notes, and empty snack wrappers. I've basically moved into the library. O-Chem final is on Monday, and I'm living and breathing reaction mechanisms. My brain feels full to bursting, but there's also a strange sense of accomplishment knowing how much I've learned (and survived) this semester. I've made study guides with my O-Chem group, and we're all in this together. It's intense, but I feel prepared, or at least as prepared as I can be. I just want to finish strong and then get some much-needed rest.",
+                win: "Feeling a sense of accomplishment for how much you've learned and survived."
+            },
+            {
+                date: 'May 10th',
+                entry: "It's over! I'm officially done with freshman year. My room is packed, and I'm leaving tomorrow morning. Saying goodbye to Chloe and Maya was bittersweet. We've talked about what we'll do over the summer and when we'll be back in the fall. This year has been a wild ride. I've cried, I've laughed, I've learned more than I ever thought possible (both academically and about myself). I started as a scared kid who felt completely lost, and I'm leaving as someone who feels a lot more confident, a little bit wiser, and genuinely excited for what comes next. Freshman year pushed me, challenged me, and ultimately, helped me grow. I'm ready for summer, but I'm also already looking forward to sophomore year. It feels good to know I belong here.",
+                win: "Recognizing your own growth from a scared kid into a more confident person who belongs."
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const container = document.getElementById('journal-container');
+
+            journalEntries.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'journal-card';
+
+                card.innerHTML = `
+                    <h3>${item.date}</h3>
+                    <p>${item.entry}</p>
+                    <button class="win-button" data-win="${item.win}">✨ Find the Small Win</button>
+                    <div class="win-container"></div>
+                `;
+
+                container.appendChild(card);
+            });
+            
+            container.addEventListener('click', function(e) {
+                if (e.target.classList.contains('win-button')) {
+                    const button = e.target;
+                    const winText = button.dataset.win;
+                    const winContainer = button.nextElementSibling;
+                    
+                    if (winText && winContainer) {
+                        winContainer.innerHTML = `<strong>Small Win:</strong> ${winText}`;
+                        winContainer.style.display = 'block';
+                        button.disabled = true;
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
